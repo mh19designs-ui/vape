@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QR Code | Vape Store</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Cairo', sans-serif;
+      background: #0d0d0d;
+      color: #f0f0f0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+
+    .card {
+      background: #1e1e1e;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 24px;
+      padding: 40px 36px;
+      text-align: center;
+      max-width: 380px;
+      width: 100%;
+    }
+
+    .label {
+      font-size: 13px;
+      font-weight: 600;
+      color: #c8ff00;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    h1 {
+      font-size: 22px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 28px;
+    }
+
+    #qrcode {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 24px;
+    }
+
+    #qrcode canvas,
+    #qrcode img {
+      border-radius: 12px;
+      padding: 12px;
+      background: #fff;
+    }
+
+    .url-box {
+      background: #161616;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 10px;
+      padding: 10px 14px;
+      font-size: 13px;
+      color: #888;
+      word-break: break-all;
+      direction: ltr;
+      margin-bottom: 20px;
+    }
+
+    .hint {
+      font-size: 13px;
+      color: #555;
+      line-height: 1.6;
+    }
+
+    .hint strong {
+      color: #c8ff00;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <div class="label">QR Code</div>
+    <h1>امسح للوصول إلى فروعنا</h1>
+
+    <div id="qrcode"></div>
+
+    <div class="url-box" id="url-display">your-website-url-here</div>
+
+    <p class="hint">
+      بعد رفع الموقع، عدّل متغير <strong>WEBSITE_URL</strong><br>
+      في ملف <strong>qrcode.html</strong> بالرابط الحقيقي
+    </p>
+  </div>
+
+  <script>
+    // ← ضع رابط موقعك هنا بعد الرفع
+    const WEBSITE_URL = "https://your-website-url-here.com";
+
+    document.getElementById("url-display").textContent = WEBSITE_URL;
+
+    new QRCode(document.getElementById("qrcode"), {
+      text: WEBSITE_URL,
+      width: 220,
+      height: 220,
+      colorDark: "#0d0d0d",
+      colorLight: "#ffffff",
+      correctLevel: QRCode.CorrectLevel.H
+    });
+  </script>
+
+</body>
+</html>
